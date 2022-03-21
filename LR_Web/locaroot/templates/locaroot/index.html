@@ -1,0 +1,36 @@
+{% extends 'locaroot/base.html' %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <script type="text/javascript" src="{% static 'js/timer.js' %}"></script>
+  <div class="main">
+    <div class="canvas">
+      <div class="content">
+        <div class="wellcome">WELCOME to LocaRoot !</div>
+        <div class="time">
+          <div class="time_title"><h2>現在時刻</h2></div>
+          <div><h2><p id="RealtimeClockArea"></p></h2></div>
+        </div>
+        <div class="log_content">
+          {% if user.is_authenticated %}
+            <div class="log">
+              <div class="log_message">現在のログインユーザー名</div>
+              <div class="username">{{ user.get_username }}</div>
+            </div>
+            <div class="sign_out"><a href="{% url 'logout' %}"><button type="button" class="btn btn-outline-primary">ログアウト</button></a></div>
+          {% else %}
+            <div class="log">
+              <div class="gest">現在未ログイン</div>
+              <div class="announce">ログインまたはユーザー登録をしてください</div>
+              <div class="buttons">
+                <!--<div class="sign_up"><a href="/admin/login/?next=/admin/"><button type="button" class="btn btn-outline-primary">新規登録（未実装）</button></a></div>-->
+                <div class="sign_in"><a href="{% url 'login' %}"><button type="button" class="btn btn-outline-primary">ログイン</button></a></div>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+  <link rel="stylesheet" href="{% static 'css/base.css' %}">
+  <link rel="icon" type="image/ico" href="{% static 'icons/LocaRoot.ico' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <title>LocaRoot</title>
+</head>
+<body>
+  <header>
+    <div class="header_line">
+      <div class="header_icon"><a href="/"><img src="{% static 'images/LR.png' %}" alt="ホームページアイコン" class="icon" width="75" height="75"></a></div>
+      <div class="header_links row">
+          <div class="col-3"><a class="header_link underline" href="/">HOME</a></div>
+        {% if user.is_authenticated %}
+          <div class="col-3"><a class="header_link underline" href="{% url 'questions_list' %}">問題一覧</a></div>
+          <div class="col-3"><a class="header_link underline" href="{% url 'question_new' %}">問題作成</a></div>
+          <div class="col-3"><a class="header_link underline" href="{% url 'answers_list' %}">回答結果</a></div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="hamburger-demo-menubox">
+      <input id="hamburger-demo1" type="checkbox" class="input-hidden">
+      <label for="hamburger-demo1" class="hamburger-demo-switch hamburger-demo-switch1">
+        <span class="hamburger-switch-line1"></span>
+      </label>
+      <div class="hamburger-demo-menuwrap">
+        <ul class="hamburger-demo-menulist">
+            <li><a class="header_link" href="/">ホーム</a></li>
+          {% if user.is_authenticated %}
+            <li><a class="header_link" href="{% url 'questions_list' %}">問題一覧</a></li>
+            <li><a class="header_link" href="{% url 'question_new' %}">問題作成</a></li>
+              <li><a class="header_link" href="/">回答結果</a></li>
+            <li><a class="header_link" href="/admin">管理画面</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="hamburger-demo-cover"></div>
+    </div>
+  </header>
+
+  <main>
+      <div class="space"></div>
+      {% block content %}
+      {% endblock %}
+      <div class="space"></div>
+  </main>
+
+  <footer>
+    <div class="label"><img src="{% static 'images/LocaRoot_label.png' %}" alt="フッターラベル" width="700"></div>
+  </footer>
+  <div class="footer_text">© 2022 ハッカソン</div>
+</body>
+</html>

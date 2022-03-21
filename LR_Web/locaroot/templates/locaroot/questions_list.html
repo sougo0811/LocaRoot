@@ -1,0 +1,74 @@
+{% extends 'locaroot/base.html' %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/questions_list.css' %}">
+  <div class="main">
+    <div class="canvas">
+      <ul class="contents">
+        {% for question in questions %}
+          <div class="question">
+            <li class="item">
+              <div class="contents_block">
+                <div class="date_block">
+                  <div class="pub_day">公開日</div>
+                  <div class="date">
+                    {% if question.published_date == blank %}
+                      <p  class="text_space">未公開</p>
+                    {% else %}
+                      {{ question.published_date }}
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="title_block">
+                  <div class="title">問題名</div>
+                  <div class="question_title">
+                    <h4><a href="{% url 'question_detail' pk=question.pk %}">{{ question.question_title }}</a></h4>
+                  </div>
+                </div>
+                <div class="id_block">
+                  <div class="id">問題番号</div>
+                  <div class="question_id">
+                    <h3>{{ question.question_id }}</h3>
+                  </div>
+                </div>
+                <div class="answer_num_block">
+                  <div class="answer_num">回答番号</div>
+                  <div class="question_answer">
+                    <h3>{{ question.answer_num }}</h3>
+                  </div>
+                </div>
+                {% if question.published_date == blank %}
+                  <div class="btn_block">
+                    <div class="pub_btn">
+                      <form action="{% url 'csv_make' pk=question.pk %}" method="POST">
+                        {% csrf_token %}
+                          <input type="hidden" value="{{ question.published_date }}" name="question">
+                          <input type="hidden" value="{{ question.question_title }}" name="question">
+                          <input type="hidden" value="{{ question.question_id }}" name="question">
+                          <input type="hidden" value="{{ question.question }}" name="question">
+                          <input type="hidden" value="{{ question.answer_num }}" name="question">
+                          <input type="hidden" value="{{ question.answer }}" name="question">
+                          <input type="hidden" value="{{ question.created_date }}" name="question">
+                          <input type="hidden" value="{{ question.author }}" name="question">
+                          <input type="submit" value="公開" button type="button" class="btn btn-outline-success"></button></div>
+                      </form>
+                    </div>
+                  </div>
+                {% else %}
+                  <div class="btn_block">
+                    <div class="pub_text">公開済み</div>
+                  </div>
+                {% endif %}
+            </li>
+          </div>
+        {% empty %}
+        <div class="empty_content">
+          <p>問題がありません</p>
+          <p>問題を作成してください</p>
+        </div>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}

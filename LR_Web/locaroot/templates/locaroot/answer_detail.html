@@ -1,0 +1,33 @@
+{% extends 'locaroot/base.html' %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/answer_detail.css' %}">
+  <div class="main">
+    <div class="canvas">
+      <ul class="content">
+        {% for csv_answer in csv_answers %}
+          {% if forloop.first %}
+            <ul class="titles">
+              <li class="time">{{ csv_answer.0 }}</li>
+              <li class="author">{{ csv_answer.1 }}</li>
+              <li class="question_title">{{ csv_answer.2 }}</li>
+              <li class="name">{{ csv_answer.3 }}</li>
+              <li class="answer">{{ csv_answer.4 }}</li>
+            </ul>
+          {% else %}
+            <ul class="answers">
+              <li class="time_a">{{ csv_answer.0 }}</li>
+              <li class="author_a">{{ csv_answer.1 }}</li>
+              <li class="question_title_a">{{ csv_answer.2 }}</li>
+              <li class="name_a">{{ csv_answer.3 }}</li>
+              <li class="answer_a">{{ csv_answer.4 }}</li>
+            </ul>
+          {% endif %}
+        {% empty %}
+
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}

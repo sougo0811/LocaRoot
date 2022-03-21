@@ -1,0 +1,166 @@
+a{
+  text-decoration: none;
+  color: yellowgreen;
+}
+
+a:hover{
+  color: darkgreen;
+}
+
+.main{
+  height: 100%;
+  width: 100%;
+  background-color: whitesmoke;
+}
+
+.canvas{
+  width: 80%;
+  height: 100%;
+  background-color: white;
+  margin: 0 10% 0 10%;
+}
+
+.contents{
+  margin: 0px;
+  padding-bottom: 30px;
+}
+
+.question{
+  border-bottom: solid 2px black;
+  margin: 0 5% 0 5%;
+}
+
+.empty_content{
+  font-weight: bold;
+  padding: 30px 0 0 30px;
+}
+
+.contents_block{
+  display: flex;
+  padding-top: 20px;
+}
+
+.date_block{
+  width: 180px;
+  padding-left: 10px;
+}
+
+.pub_day{
+  padding-left: 30%;
+}
+
+.text_space{
+  font-weight: bold;
+  padding-left: 50px;
+}
+
+.date{
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.title_block{
+  width: 30%;
+  padding-left: 1px;
+}
+
+.title{
+  padding-left: 1px;
+  
+}
+
+.id_block{
+  width: 90px;
+  padding-left: 10px;
+}
+
+.question_id{
+  padding-left: 25px;
+}
+
+.answer_num_block{
+  width: 90px;
+  padding-left: 10px;
+}
+
+.question_answer{
+  padding-left: 25px;
+}
+
+.btn{
+  margin: 25px 0 10px 7px;
+}
+
+.pub_text{
+  margin: 30px 0 10px 7px;
+  color: green;
+}
+
+@media (max-width: 900px){
+  .contents_block{
+    display: block;
+    padding-top: 20px;
+  }
+
+  .date_block{
+    padding-left: 0px;
+  }
+  
+  .pub_day{
+    padding-top: 10px;
+    padding-right: 30px;
+    margin-left: -60px;
+    float: left;
+  }
+  
+  .date{
+    padding-bottom: 10px;
+    width: 300px;
+  }
+  
+  .title_block{
+    width: 90%;
+    padding-left: 0px;
+  }
+  
+  .title{
+    padding-left: 0px;
+    float: left;
+  }
+
+  .question_title{
+    padding-left: 80px;
+  }
+  
+  .id_block{
+    padding-left: 0px;
+  }
+
+  .id{
+    float: left;
+  }
+
+  .question_id{
+    padding-left: 80px;
+  }
+  
+  .answer_num_block{
+    padding-left: 0px;
+  }
+
+  .answer_num{
+    float: left;
+  }
+
+  .question_answer{
+    padding-left: 80px;
+  }
+  
+  .btn{
+    margin: 0 0 10px 40%;
+  }
+  
+  .pub_text{
+    margin: 0 0 10px 40%;
+  }
+}

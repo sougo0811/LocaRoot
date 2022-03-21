@@ -1,0 +1,57 @@
+{% extends 'locaroot/base.html' %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/question_detail.css' %}">
+  <div class="main">
+    <div class="canvas">
+      <div class="content">
+        <div class="author_block">
+          <div class="author">作成者</div>
+          <div class="question_author">{{ question.author }}</div>
+        </div>
+        <div class="title_block">
+          <div class="title">問題名</div>
+          <div class="question_title">{{ question.question_title }}</div>
+        </div>
+        <div class="id_block">
+          <div class="id">問題番号</div>
+          <div class="question_id">{{ question.question_id }}</div>
+        </div>
+        <div class="question_block">
+          <div class="question">問題</div>
+          <div class="question_question">{{ question.question}}</div>
+        </div>
+        <div class="answer_num_block">
+          <div class="answer_num">解答番号</div>
+          <div class="question_answer_num">{{ question.answer_num }}</div>
+        </div>
+        <div class="answer_block">
+          <div class="answer">解答</div>
+          <div class="question_answer">{{ question.answer }}</div>  
+        </div>
+        <div class="created_date_block">
+          <div class="created_date">作成日</div>
+          <div class="question_created_date">{{ question.created_date }}</div>
+        </div>
+        <div class="published_date_block">
+          <div class="published_date">公開日</div>
+          <div class="question_published_date">{{ question.published_date }}</div>
+        </div>
+        <div class="buttons">
+          {% if question.published_date == blank %}
+            <div class="edit">
+              <a href="{% url 'question_edit' pk=question.pk %}"><button type="button" class="btn btn-outline-secondary">編集</button></a>
+            </div>
+          {% else %}
+            <div class="ans_result">
+              <a href="{% url 'csv_read' pk=question.pk %}"><button type="button" class="btn btn-outline-success">回答結果</button></a>
+            </div>
+          {% endif %}
+          <div class="delete">
+            <a href="{% url 'question_delete' pk=question.pk %}"><button type="button" class="btn btn-outline-danger">削除</button></a>
+          </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

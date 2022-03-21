@@ -1,0 +1,17 @@
+.main{
+  height: 100%;
+  width: 100%;
+  background-color: whitesmoke;
+}
+
+.canvas{
+  width: 80%;
+  height: 100%;
+  background-color: white;
+  margin: 0 10% 0 10%;
+}
+
+.content{
+  padding: 50px 25%;
+  text-align: center;
+}

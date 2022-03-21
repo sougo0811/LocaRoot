@@ -1,0 +1,60 @@
+.main{
+  height: 600px;
+  width: 100%;
+  background-color: whitesmoke;
+}
+
+.canvas{
+  width: 80%;
+  height: 100%;
+  background-color: white;
+  margin: 0 10% 0 10%;
+}
+
+.content{
+  padding-top: 30px;
+  text-align: center;
+}
+
+.wellcome{
+  font-size: 50px;
+  font-weight: bold;
+  font-family: 'Times New Roman';
+  padding-bottom: 30px;
+}
+
+.log_content{
+  font-size: 24px;
+  padding-top: 40px;
+}
+
+.log_message{
+  padding-bottom: 20px;
+}
+
+.username{
+  font-weight: bold;
+  padding-bottom: 30px;
+}
+
+.gest{
+  font-weight: bold;
+}
+
+.announce{
+  padding-top: 20px;
+}
+
+.buttons{
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.sign_up{
+  padding-right: 25px;
+}
+
+.sign_in{
+  padding-left: 0px;
+}

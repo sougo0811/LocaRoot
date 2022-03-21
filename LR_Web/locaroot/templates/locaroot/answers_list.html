@@ -1,0 +1,48 @@
+{% extends 'locaroot/base.html' %}
+{% load static %}
+
+{% block content %}
+  <link rel="stylesheet" href="{% static 'css/answers_list.css' %}">
+  <div class="main">
+    <div class="canvas">
+      <ul class="contents">
+        {% for answer in answers %}
+          <div class="question">
+            <li class="item">
+              <div class="contents_block">
+                <div class="date_block">
+                  <div class="pub_day">公開日</div>
+                  <div class="date">
+                      {{ answer.published_date }}
+                  </div>
+                </div>
+                <div class="title_block">
+                  <div class="title">問題名</div>
+                  <div class="question_title">
+                    <h4><a href="{% url 'answer_analysis' pk=answer.pk %}">{{ answer.question_title }}</a></h4>
+                  </div>
+                </div>
+                <div class="id_block">
+                  <div class="id">問題番号</div>
+                  <div class="question_id">
+                    <h3>{{ answer.question_id }}</h3>
+                  </div>
+                </div>
+                <div class="answer_num_block">
+                  <div class="answer_num">回答番号</div>
+                  <div class="question_answer">
+                    <h3>{{ answer.answer_num }}</h3>
+                  </div>
+                </div>
+            </li>
+          </div>
+        {% empty %}
+        <div class="empty_content">
+          <p>問題がありません</p>
+          <p>問題を作成してください</p>
+        </div>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,12 @@
+admin.txt
+memo.txt
+db.sqlite3
+local_settings.py
+__pycache__
+*.pyc
+*~
+*.csv
+/.vscode
+migrations/
+LRvenv
+/static

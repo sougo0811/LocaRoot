@@ -1,0 +1,42 @@
+{% extends 'locaroot/base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/question_detail.css' %}">
+<script type="text/javascript" src="{% static 'js/timer.js' %}"></script>
+<div class="main">
+  <div class="canvas">
+    <div class="content">
+      <form method="POST">{% csrf_token %}
+        <div class="author_block">
+          <div class="author">作成者</div>
+          <div class="question_author_edit">
+            {% if user.is_authenticated %}
+              <div class="username">{{ user.get_username }}</div>
+            {% else %}
+              <div class="username">No User</div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="question_form">
+          {% bootstrap_form form layout="horizontal" %}
+        </div>
+        <div class="small_space"></div>
+        <div class="created_date_block">
+          <div class="created_date">作成日</div>
+          <div class="question_created_date_edit"><p id="RealtimeClockArea"></p></div>
+        </div>
+        <div class="buttons">
+          <div class="submit">
+            <button type="submit" class="btn btn-outline-primary">保存</button>
+          </div>
+          <div class="delete">
+            <a href="{% url 'questions_list' %}"><button type="button" class="btn btn-outline-secondary">戻る</button></a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
