@@ -57,6 +57,10 @@
   }
 }
 
+.form-control{
+  margin-top: 10px;
+}
+
 .author{
   float: left;
   font-weight: bold;
