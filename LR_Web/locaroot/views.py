@@ -3,6 +3,10 @@ from django.utils import timezone
 from .models import QuizModel
 from .forms import QuestionForm
 from django.contrib.auth.models import User
+import datetime
+import json
+from django.http.response import JsonResponse
+from django.views.decorators.csrf import ensure_csrf_cookie
 
 def index(request):
   return render(request, 'locaroot/index.html', {})
@@ -64,12 +68,40 @@ from .forms import LoginForm
 
 
 class Login(LoginView):
-    #ログインページ
-    form_class = LoginForm
-    template_name = 'accounts/login.html'
+  #ログインページ
+  form_class = LoginForm
+  template_name = 'accounts/login.html'
 
 
 class Logout(LoginRequiredMixin, LogoutView):
-    #ログアウトページ
-    template_name = 'locaroot/index.html'
+  #ログアウトページ
+  template_name = 'locaroot/index.html'
 
+'''
+@ensure_csrf_cookie
+def M5stack(request):
+  if request.method == 'GET':
+    return JsonResponse({})
+  datas = json.loads(request.body)
+  print("--受取り値--------------------------")
+  print(type(datas))
+  print(datas)
+  ret = {"data": "param1:" + datas["param1"] + ", param2:" + datas["param2"]}
+  return JsonResponse(ret)
+
+  if request.method == "POST":
+    author = request.json["author"]
+    question_title = request.json["question_title"]
+    name = request.json["name"]
+    answer = str(request.json["answer"])
+    dt_now = datetime.datetime.now()
+    dt_now = str(dt_now.replace(microsecond = 0))
+    path = './' + 'db/' + author + '/' + question_title + '.csv' # ← ここにファイルを指定
+    with open(path, 'a', encoding='utf-8') as f:
+      f.write(dt_now + ',')
+      f.write(author + ',')
+      f.write(question_title + ',')
+      f.write(name + ',')
+      f.write(answer + '\n')
+  return render(request, 'locaroot/index.html', {})
+'''

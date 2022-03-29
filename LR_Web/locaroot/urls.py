@@ -15,4 +15,5 @@ urlpatterns = [
     path('csv_make/<int:pk>/', csv_views.csv_make, name='csv_make'),
     path('question/<int:pk>/csv_read/', csv_views.csv_read, name='csv_read'),
     path('answer_analysis/<int:pk>/', csv_views.answer_analysis, name='answer_analysis'),
+    #path('M5stack/', views.M5stack, name='M5stack'),
 ]
