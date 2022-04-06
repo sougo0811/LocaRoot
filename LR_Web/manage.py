@@ -2,7 +2,8 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-
+#import subprocess
+import Flask_run as f
 
 def main():
     """Run administrative tasks."""
@@ -20,3 +21,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    f.main()

@@ -5,11 +5,13 @@ app = Flask(__name__)
 @app.route('/')
 def hello():
   name = "This is CSV server"
+  print("↓ Flask_Server")
   return name
 
 @app.route('/hello')
 def good():
     name = "Hello World"
+    print("↓ Flask_Server")
     return name
 
 @app.route('/CSV_ACCESS',methods=["GET","POST"])
@@ -30,6 +32,7 @@ def file():
       f.write(name + ',')
       f.write(answer + '\n')
     out = 'CSV ACCESS OK '
+  print("↓ Flask_Server")
   return out
 
 if __name__ == "__main__":

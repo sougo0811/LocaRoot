@@ -1,0 +1,9 @@
+import os
+
+def main():
+  cmd_Flask_file = "Flask_runserver.cmd"
+  command_B = cmd_Flask_file
+  os.system(command_B)
+
+if __name__ == '__main__':
+  main()
