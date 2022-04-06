@@ -40,6 +40,12 @@ def csv_make(request,pk):
   questions = QuizModel.objects.filter(created_date__lte=timezone.now(), author=request.user.id).order_by('question_id')
   return render(request, 'locaroot/questions_list.html', {'questions': questions})
 
+def csv_delete(request,pk):
+  question = get_object_or_404(QuizModel, pk=pk)
+  author=request.user
+  question_title = question.question_title
+  os.remove(path + str(author) + "/" + str(question_title) + ".csv")
+
 def csv_read(request,pk):
   question = get_object_or_404(QuizModel, pk=pk)
   user_name = question.author

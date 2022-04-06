@@ -7,6 +7,7 @@ import datetime
 import json
 from django.http.response import JsonResponse
 from django.views.decorators.csrf import ensure_csrf_cookie
+from .csv_views import csv_delete
 
 def index(request):
   return render(request, 'locaroot/index.html', {})
@@ -50,6 +51,7 @@ def question_edit(request, pk):
   return render(request, 'locaroot/question_edit.html', {'form': form})
 
 def question_delete(request,pk):
+  csv_delete(request,pk)
   question = get_object_or_404(QuizModel, pk=pk)
   question.delete()
   print("削除完了")
@@ -77,6 +79,7 @@ class Logout(LoginRequiredMixin, LogoutView):
   #ログアウトページ
   template_name = 'locaroot/index.html'
 
+#DjangoでM5Stackからのアクセス
 '''
 @ensure_csrf_cookie
 def M5stack(request):
